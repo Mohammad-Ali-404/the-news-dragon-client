@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { BiBookmark, BiShareAlt } from "react-icons/bi";
 import { FaEye, FaRegStar, FaStar } from "react-icons/fa";
 import moment from 'moment';
-import Rating from 'react-rating';
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+
 
 const NewsCard = ({news}) => {
     const {title, _id, details, image_url, author, rating, total_view } = news;
@@ -36,15 +38,8 @@ const NewsCard = ({news}) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-muted d-flex">
-                    <div className='flex-grow-1'>
-                        <Rating
-                            placeholderRating={rating.number}
-                            readonly
-                            emptySymbol={<FaRegStar></FaRegStar>}
-                            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
-                            fullSymbol={<FaStar></FaStar>}
-                        >   
-                        </Rating>
+                    <div className='flex-grow-1 d-flex align-items-center'>
+                        <Rating style={{ maxWidth:100 }} value={Math.round(rating?.number)} readOnly />
                         <p>{rating?.number}</p>
                     </div>
                     <div>
